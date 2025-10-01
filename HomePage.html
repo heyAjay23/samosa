@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/png" href="samosa.png">
+  <title>Samosa – Home</title>
+  <meta name="theme-color" content="#0e0f1c" />
+  <link rel="stylesheet" href="HomePage.css">
+</head>
+<body>
+  <!-- Background FX -->
+  <div class="bg">
+    <div class="aurora" aria-hidden="true"></div>
+    <div class="blob" aria-hidden="true"></div>
+  </div>
+
+  <div class="wrap">
+    <div class="card" role="region" aria-label="Room selector">
+      <div class="badge" id="whyBadge">Why?</div>
+
+      <!-- Brand with Samosa logo -->
+      <div class="brand">
+        <div class="logo-img-wrap">
+          <img src="samosa.png" alt="Samosa logo" class="logo-img">
+        </div>
+        <div class="brand-text">Samosa</div>
+      </div>
+
+      <h1 class="title">Jump in and play</h1>
+      <p class="subtitle">Create a room or join one — fast and simple.</p>
+
+      <!-- CREATE -->
+      <div id="createSection" class="section shown" aria-live="polite">
+        <div class="section-inner">
+
+          <!-- Character card centered above input -->
+          <div class="char-card" id="charCardCreate" aria-hidden="true" style="display:none;">
+            <div class="char-circle" id="charCircleCreate"></div>
+            <div class="char-label" id="charLabelCreate"></div>
+          </div>
+
+          <div class="row first-row">
+            <input id="nameCreate" class="input" type="text" maxlength="24"
+                   placeholder="Your name (e.g., Ajay) or choose a character" autocomplete="name" />
+            <button id="pickCharCreate" class="btn secondary small" title="Pick a character">Select Character</button>
+          </div>
+
+          <div class="row">
+            <button id="createBtn" class="btn" aria-label="Create Room">Create Room</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- JOIN -->
+      <div id="joinSection" class="section hidden" aria-live="polite" aria-hidden="true">
+        <div class="section-inner">
+
+          <div class="char-card" id="charCardJoin" aria-hidden="true" style="display:none;">
+            <div class="char-circle" id="charCircleJoin"></div>
+            <div class="char-label" id="charLabelJoin"></div>
+          </div>
+
+          <div class="row first-row">
+            <input id="nameJoin" class="input" type="text" maxlength="24" placeholder="Your name or choose a character" autocomplete="name"/>
+            <button id="pickCharJoin" class="btn secondary small" title="Pick a character">Select Character</button>
+          </div>
+          <div class="row">
+            <input id="roomCode" class="input" type="text" maxlength="10" placeholder="Room code" inputmode="latin" />
+            <button id="joinBtn" class="btn secondary" aria-label="Join Room">Join Room</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Toggle -->
+      <p class="hint" id="toggleHint">
+        Have a room code? <button type="button" id="openJoin">Join one</button>
+      </p>
+
+    </div>
+  </div>
+
+  <!-- Character Picker Modal -->
+  <div id="charPicker" class="modal hidden" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-backdrop" id="charBackdrop"></div>
+    <div class="modal-panel" role="document" aria-labelledby="charPickerLabel">
+      <header class="modal-header">
+        <h2 id="charPickerLabel">Choose your character</h2>
+        <button id="charClose" class="modal-close" aria-label="Close">✕</button>
+      </header>
+      <div class="modal-body">
+        <p class="muted">Pick one character to represent you in the game. You can change this later or edit the name.</p>
+
+        <ul id="charList" class="char-list" role="listbox" aria-label="Characters">
+          <!-- Items inserted by JS -->
+        </ul>
+
+        <div class="modal-actions">
+          <button id="charConfirm" class="btn">Confirm</button>
+          <button id="charCancel" class="btn secondary">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Why modal -->
+  <div id="whyModal" class="modal hidden" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-backdrop" id="whyBackdrop"></div>
+    <div class="modal-panel" role="document" aria-labelledby="whyLabel">
+      <header class="modal-header">
+        <h2 id="whyLabel">Why Samosa?</h2>
+        <button id="whyClose" class="modal-close" aria-label="Close">✕</button>
+      </header>
+      <div class="modal-body" style="display:flex;gap:12px;align-items:flex-start;">
+        <div style="flex:0 0 96px;">
+          <img src="samosa.png" alt="Samosa logo" style="width:96px;height:96px;object-fit:contain;border-radius:12px">
+        </div>
+        <div style="flex:1">
+          <p>
+            i have a assignment to make a small website in college so i make this samosa.
+          </p>
+          <p>
+            if you continue with this website i will make it where viewers also can play with you. Thank you.
+          </p>
+          <p>
+            and thank you guys you always laugh me in my bad days.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading toast (bottom center) -->
+  <div id="loadingToast" class="loading-toast hidden" aria-live="polite" role="status">
+    <div id="loadingText">Loading…</div>
+  </div>
+
+  <script type="module" src="HomePage.js"></script>
+</body>
+</html>

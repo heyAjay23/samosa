@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Samosa – Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="Game.css">
+</head>
+<body>
+  <!-- Background FX -->
+  <div class="bg">
+    <div class="aurora" aria-hidden="true"></div>
+    <div class="blob" aria-hidden="true"></div>
+  </div>
+
+  <!-- HEADER -->
+ <header class="hud">
+  <div class="hud-inner">
+    <div class="brand">
+      <div class="logo-img-wrap">
+        <img src="samosa.png" alt="Samosa Logo" class="logo-img">
+      </div>
+      <div class="brand-text">Samosa</div>
+    </div>
+
+      <div class="hud-info">
+        <span>Room: <b id="roomVal">—</b></span>
+        <span>You: <b id="nameVal">—</b></span>
+        <span>Round: <b id="roundVal">1</b></span>
+        <span>Frame: <b id="frameVal">1</b></span>
+        <span>Status: <b id="status">Connecting…</b></span>
+      </div>
+      <div class="hud-actions">
+        <button id="copyCode" class="mini">Copy code</button>
+        <button id="copyInvite" class="mini">Invite</button>
+        <a href="HomePage.html" class="leave mini">Leave</a>
+      </div>
+    </div>
+
+    <!-- small transient action message (top-right) -->
+    <div id="actionMsg" class="action-msg" style="display:none;"></div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="board">
+    <!-- Center: Movie frame -->
+    <section class="movie-section">
+
+      <!-- Round name heading ABOVE the frame -->
+      <div class="round-heading">
+        <h1 id="roundName">Hollywood Movies</h1>
+      </div>
+
+      <div id="movieBox" class="movie-frame is-blurred">
+        <img id="movieFrame" src="movie1.jpg" alt="Movie frame">
+
+        <!-- Movie name card (revealed by host) -->
+        <div class="movie-name-card" id="movieNameCard" style="display:none;">
+          🎬 <span id="movieNameText">Unknown</span>
+        </div>
+
+        <!-- reveal overlay sits on top of the frame until host reveals -->
+        <div class="reveal-overlay" id="revealOverlay">
+          <button id="revealBtn" class="reveal-btn" style="display:none;">👀 Reveal Frame</button>
+          <div id="waitMsg" class="wait-msg" style="display:none;">Waiting for host to reveal…</div>
+          <div id="roundDoneMsg" class="round-done" style="display:none;">Round complete! 🎉</div>
+        </div>
+      </div>
+
+      <!-- NAVIGATION BUTTONS (Below Frame) -->
+      <div class="frame-controls-below">
+        <button id="prevFrameBtn" class="control-btn mini warn" style="display:none;">⏮ Prev</button>
+        <button id="nextFrameBtn" class="control-btn mini" style="display:none;">⏭ Next</button>
+        <button id="showMovieBtn" class="control-btn mini info" style="display:none;">🎬 Show Movie Name</button>
+      </div>
+
+      <!-- Round banner (transient) -->
+      <div id="roundBanner" class="round-banner" style="display:none;">
+        <div id="roundBannerText" class="round-banner-text"></div>
+      </div>
+
+    </section>
+
+    <!-- Right: Buzzer + Players + Buzz order -->
+    <aside class="players-panel">
+      <div class="buzzer-area">
+        <button id="buzzerBtn" class="buzzer-btn" disabled>🔔 Press Buzzer</button>
+        <div id="buzzerStatus" class="buzzer-status" aria-live="polite"></div>
+      </div>
+
+      <h2 class="players-heading">Players (<span id="pcount">0</span>)</h2>
+      <ul id="players" class="players-list"></ul>
+
+      <div class="buzz-panel">
+        <h3>Buzz Order (Frame <span id="frameVal2">1</span>)</h3>
+        <ol id="buzzList" class="buzz-list"></ol>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Winner overlay (shown at end of round) -->
+  <div id="winnerOverlay" class="winner-overlay" style="display:none;">
+    <div class="winner-card enhanced-winner-card">
+      <div class="winner-top-decor">
+        <div class="trophy">🏆</div>
+      </div>
+
+      <div class="winner-top">
+        <div class="winner-first">
+          <div class="avatar-large" id="winnerAvatar"></div>
+          <div class="winner-meta">
+            <div class="rank">1</div>
+            <div class="player-name" id="winnerName">Winner</div>
+            <div class="player-score" id="winnerScore">0</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="winner-list" id="winnerList"></div>
+
+      <div class="winner-actions">
+        <button id="leaveAfterRound" class="mini warn">Leave Room</button>
+        <button id="continueAfterRound" class="mini">Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast (bottom center) -->
+  <div id="toast" class="toast" style="display:none;"></div>
+
+  <script type="module" src="Game.js"></script>
+</body>
+</html>
